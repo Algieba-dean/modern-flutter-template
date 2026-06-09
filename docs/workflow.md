@@ -50,6 +50,20 @@ Review should prioritize:
 - maintainability
 - release risk
 
+## Security Checks
+
+The security workflow runs dependency review on pull requests and CodeQL
+analysis for native Android host code. Treat failures as release blockers unless
+the team has reviewed and documented a false positive.
+
+Do not commit real `.env` files, signing keys, provisioning profiles, Firebase
+service files, API tokens, or customer data. Keep examples in `.env.example` and
+store real values in CI, deployment, or platform-specific secret stores.
+
+Enable GitHub secret scanning and push protection on the repository after it is
+created from this template. If your organization standardizes on another scanner
+such as Gitleaks or TruffleHog, add it as a separate required workflow.
+
 ## Labels
 
 Labels are managed through `.github/labels.yml`. Prefer changing that file and

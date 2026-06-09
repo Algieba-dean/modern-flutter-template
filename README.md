@@ -29,6 +29,7 @@ dart run tool/init_project.dart
 - `ios/Runner.xcodeproj/project.pbxproj`
 - `macos/Runner/Configs/AppInfo.xcconfig`
 - `web/manifest.json`
+- `.env.example`
 - `.github/**`
 
 5. Install dependencies and verify the baseline:
@@ -139,6 +140,7 @@ Android also includes the Patrol JUnit runner and orchestrator Gradle setup.
 
 - `ci.yml`: format, analyze, unit/widget test, and multi-platform build checks
 - `patrol.yml`: Android emulator Patrol smoke test
+- `security.yml`: dependency review and CodeQL native host analysis
 - `semantic-pr.yml`: Conventional Commit style PR title validation
 - `pr-labeler.yml`: path-based PR labeling
 - `labels.yml`: repository label synchronization
@@ -150,6 +152,7 @@ Android also includes the Patrol JUnit runner and orchestrator Gradle setup.
 
 - [Architecture](docs/architecture.md)
 - [Code Style](docs/code-style.md)
+- [Configuration](docs/configuration.md)
 - [Testing Strategy](docs/testing.md)
 - [Workflow Guidelines](docs/workflow.md)
 - [Release Checklist](docs/checklists/release.md)
