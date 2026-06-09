@@ -1,0 +1,52 @@
+kind/docs:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "**/*.md"
+          - "docs/**"
+
+area/android:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "android/**"
+
+area/ios:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "ios/**"
+
+area/desktop:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "linux/**"
+          - "macos/**"
+          - "windows/**"
+
+area/web:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "web/**"
+
+area/app:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "lib/**"
+
+area/tests:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "test/**"
+          - "patrol_test/**"
+
+area/patrol:
+  - changed-files:
+      - any-glob-to-any-file:
+          - "patrol_test/**"
+          - "pubspec.yaml"
+          - "pubspec.lock"
+
+area/ci:
+  - changed-files:
+      - any-glob-to-any-file:
+          - ".github/**"
+          - "analysis_options.yaml"
+          - ".editorconfig"

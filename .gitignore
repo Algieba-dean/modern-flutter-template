@@ -1,0 +1,92 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor swap and local history
+*.swo
+*.swp
+.history
+
+# Logs and temporary files
+*.log
+*.tmp
+*.temp
+
+# Compiled artifacts
+*.class
+*.pyc
+
+# Legacy VCS and IDE metadata
+.atom/
+.build/
+.buildlog/
+.svn/
+.swiftpm/
+migrate_working_dir/
+
+# IntelliJ related
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# The .vscode folder contains shared launch configuration and tasks for this
+# template, so it is intentionally tracked by default.
+#.vscode/
+
+# Flutter, Dart, and Pub
+**/doc/api/
+**/ios/Flutter/.last_build_id
+.dart_tool/
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+/build/
+/coverage/
+
+# Patrol generated test bundle
+patrol_test/test_bundle.dart
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p8
+*.p12
+*.mobileprovision
+*.provisionprofile
+
+# Firebase and platform service configuration.
+# Commit examples or generated non-secret code, not project credentials.
+android/app/google-services.json
+ios/Runner/GoogleService-Info.plist
+macos/Runner/GoogleService-Info.plist
+
+# Android signing and build intermediates
+/android/app/debug
+/android/app/profile
+/android/app/release
+android/key.properties
+android/**/*.jks
+android/**/*.keystore
+
+# Apple local dependency and signing state
+ios/Pods/
+macos/Pods/
+**/xcuserdata/
+*.xcuserstate
+
+# Fastlane generated reports
+fastlane/report.xml
+fastlane/Preview.html
+fastlane/screenshots/**/*.png
+fastlane/test_output/
+
+# Symbolication
+app.*.symbols
+build/symbols/
+
+# Obfuscation maps
+app.*.map.json

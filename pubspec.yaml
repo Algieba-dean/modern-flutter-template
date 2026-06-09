@@ -1,0 +1,31 @@
+name: enterprise_flutter_template
+description: Enterprise Flutter application repository template.
+publish_to: none
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.11.0
+  flutter: ">=3.32.0"
+
+dependencies:
+  cupertino_icons: ^1.0.8
+  flutter:
+    sdk: flutter
+
+dev_dependencies:
+  flutter_lints: ^6.0.0
+  flutter_test:
+    sdk: flutter
+  patrol: ^4.6.1
+  patrol_cli: ^4.4.0
+
+flutter:
+  uses-material-design: true
+
+patrol:
+  android:
+    package_name: com.example.enterprise.enterprise_flutter_template
+  ios:
+    bundle_id: com.example.enterprise.enterpriseFlutterTemplate
+  macos:
+    bundle_id: com.example.enterprise.enterpriseFlutterTemplate

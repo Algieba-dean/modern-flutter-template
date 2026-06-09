@@ -1,0 +1,31 @@
+name: Engineering Task
+description: Track non-feature engineering work.
+title: "[Task]: "
+labels: ["kind/maintenance"]
+body:
+  - type: textarea
+    id: objective
+    attributes:
+      label: Objective
+      description: What needs to be done and why?
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: Scope
+      description: What is included and excluded?
+    validations:
+      required: true
+
+  - type: textarea
+    id: validation
+    attributes:
+      label: Validation
+      description: How will this be verified?
+      placeholder: |
+        - make check
+        - make patrol-test-android PATROL_DEVICE=emulator-5554
+    validations:
+      required: true

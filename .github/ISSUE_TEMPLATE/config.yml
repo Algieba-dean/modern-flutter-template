@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Security vulnerability
+    url: https://github.com/your-org/enterprise-flutter-template/security/policy
+    about: Please report vulnerabilities privately through the security policy.
+  - name: Workflow and contribution guide
+    url: https://github.com/your-org/enterprise-flutter-template/blob/main/CONTRIBUTING.md
+    about: Read this before opening large changes.

@@ -1,0 +1,76 @@
+- name: kind/bug
+  color: d73a4a
+  description: Something is not working correctly.
+- name: kind/feature
+  color: a2eeef
+  description: New feature or user-visible capability.
+- name: kind/docs
+  color: 0075ca
+  description: Documentation changes.
+- name: kind/refactor
+  color: cfd3d7
+  description: Code restructuring without intended behavior change.
+- name: kind/test
+  color: bfd4f2
+  description: Test-only changes.
+- name: kind/maintenance
+  color: fef2c0
+  description: Build, dependency, CI, or repository maintenance.
+
+- name: priority/critical
+  color: b60205
+  description: Must be fixed immediately.
+- name: priority/high
+  color: d93f0b
+  description: High priority.
+- name: priority/medium
+  color: fbca04
+  description: Medium priority.
+- name: priority/low
+  color: 0e8a16
+  description: Low priority.
+
+- name: status/blocked
+  color: 5319e7
+  description: Blocked by a dependency or decision.
+- name: status/stale
+  color: ededed
+  description: No activity for a while.
+- name: status/wontfix
+  color: ffffff
+  description: This will not be worked on.
+
+- name: area/android
+  color: 3ddc84
+  description: Android host project or Android-specific behavior.
+- name: area/ios
+  color: c5def5
+  description: iOS host project or iOS-specific behavior.
+- name: area/desktop
+  color: bfdadc
+  description: macOS, Windows, or Linux desktop behavior.
+- name: area/web
+  color: 1d76db
+  description: Web host project or web-specific behavior.
+- name: area/app
+  color: 0e8a16
+  description: Flutter application source code.
+- name: area/tests
+  color: c2e0c6
+  description: Unit, widget, integration, or E2E tests.
+- name: area/patrol
+  color: 6b46c1
+  description: Patrol integration testing.
+- name: area/ci
+  color: f9d0c4
+  description: GitHub Actions, automation, or repository tooling.
+
+- name: dependencies
+  color: 0366d6
+  description: Dependency updates.
+- name: security
+  color: b60205
+  description: Security-sensitive change or report.
+- name: good first issue
+  color: 7057ff
+  description: Good for newcomers.

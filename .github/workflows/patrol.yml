@@ -1,0 +1,59 @@
+name: Patrol
+
+on:
+  workflow_dispatch:
+  pull_request:
+    branches: ["main", "master"]
+    paths:
+      - "android/**"
+      - "ios/**"
+      - "lib/**"
+      - "macos/**"
+      - "patrol_test/**"
+      - "pubspec.lock"
+      - "pubspec.yaml"
+      - ".github/workflows/patrol.yml"
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  FLUTTER_CHANNEL: stable
+  PATROL_ANALYTICS_ENABLED: "false"
+
+jobs:
+  android-smoke:
+    name: Android Patrol Smoke Test
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Set up Java
+        uses: actions/setup-java@v5
+        with:
+          distribution: temurin
+          java-version: "17"
+
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: ${{ env.FLUTTER_CHANNEL }}
+          cache: true
+
+      - name: Install dependencies
+        run: make setup
+
+      - name: Run Patrol on Android emulator
+        uses: reactivecircus/android-emulator-runner@v2.37.0
+        with:
+          api-level: 35
+          arch: x86_64
+          target: google_apis
+          profile: pixel_6
+          script: make patrol-test-android PATROL_DEVICE=emulator-5554

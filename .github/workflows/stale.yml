@@ -1,0 +1,29 @@
+name: Close Stale Issues and Pull Requests
+
+on:
+  schedule:
+    - cron: "30 1 * * *"
+  workflow_dispatch:
+
+permissions:
+  issues: write
+  pull-requests: write
+
+jobs:
+  stale:
+    name: Mark Stale
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mark stale items
+        uses: actions/stale@v10
+        with:
+          days-before-stale: 90
+          days-before-close: 14
+          stale-issue-label: status/stale
+          stale-pr-label: status/stale
+          stale-issue-message: This issue is stale because it has had no activity for 90 days.
+          stale-pr-message: This pull request is stale because it has had no activity for 90 days.
+          close-issue-message: This issue was closed because it had no activity for 14 days after being marked stale.
+          close-pr-message: This pull request was closed because it had no activity for 14 days after being marked stale.
+          exempt-issue-labels: priority/critical,security,status/blocked
+          exempt-pr-labels: priority/critical,security,status/blocked

@@ -1,0 +1,48 @@
+name-template: "v$RESOLVED_VERSION"
+tag-template: "v$RESOLVED_VERSION"
+
+categories:
+  - title: Features
+    labels:
+      - kind/feature
+  - title: Bug Fixes
+    labels:
+      - kind/bug
+  - title: Tests
+    labels:
+      - kind/test
+      - area/tests
+      - area/patrol
+  - title: Documentation
+    labels:
+      - kind/docs
+  - title: Maintenance
+    labels:
+      - kind/maintenance
+      - area/ci
+      - dependencies
+  - title: Refactoring
+    labels:
+      - kind/refactor
+
+change-template: "- $TITLE @$AUTHOR (#$NUMBER)"
+change-title-escapes: '\<*_&'
+
+version-resolver:
+  major:
+    labels:
+      - priority/critical
+  minor:
+    labels:
+      - kind/feature
+  patch:
+    labels:
+      - kind/bug
+      - kind/test
+      - kind/refactor
+  default: patch
+
+template: |
+  ## What's Changed
+
+  $CHANGES
