@@ -1,6 +1,5 @@
 import 'package:enterprise_flutter_template/src/app/app.dart';
 import 'package:enterprise_flutter_template/src/app/app_config.dart';
-import 'package:enterprise_flutter_template/src/app/app_constants.dart';
 import 'package:flutter_test/flutter_test.dart';
 
 void main() {
@@ -14,7 +13,7 @@ void main() {
       ),
     );
 
-    expect(find.text(AppConstants.appName), findsWidgets);
+    expect(find.text('Enterprise Flutter Template'), findsWidgets);
     expect(find.text('Development'), findsOneWidget);
   });
 }

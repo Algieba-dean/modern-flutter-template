@@ -42,29 +42,70 @@ doctor: ## Print Flutter environment diagnostics.
 setup: ## Install Dart and Flutter dependencies.
 	$(FLUTTER) pub get
 
+.PHONY: get
+get: setup ## Alias for setup.
+
+.PHONY: pub-get
+pub-get: setup ## Alias for setup.
+
 .PHONY: outdated
 outdated: ## Show dependency update status.
 	$(FLUTTER) pub outdated
+
+.PHONY: pub-outdated
+pub-outdated: outdated ## Alias for outdated.
 
 .PHONY: upgrade
 upgrade: ## Upgrade dependencies within pubspec constraints.
 	$(FLUTTER) pub upgrade
 
+.PHONY: pub-upgrade
+pub-upgrade: upgrade ## Alias for upgrade.
+
+.PHONY: pub-upgrade-major
+pub-upgrade-major: ## Upgrade dependencies including major versions.
+	$(FLUTTER) pub upgrade --major-versions
+
 .PHONY: format
 format: ## Format all Dart code.
 	find $(DART_FORMAT_DIRS) -name '*.dart' ! \( $(DART_FORMAT_EXCLUDES) \) -print0 | xargs -0 $(DART) format
+
+.PHONY: fmt
+fmt: format ## Alias for format.
 
 .PHONY: format-check
 format-check: ## Verify Dart formatting without writing changes.
 	find $(DART_FORMAT_DIRS) -name '*.dart' ! \( $(DART_FORMAT_EXCLUDES) \) -print0 | xargs -0 $(DART) format --output=none --set-exit-if-changed
 
+.PHONY: fix
+fix: ## Show Dart automated fix suggestions.
+	$(DART) fix --dry-run
+
+.PHONY: fix-apply
+fix-apply: ## Apply Dart automated fixes.
+	$(DART) fix --apply
+
 .PHONY: analyze
 analyze: ## Run static analysis.
 	$(FLUTTER) analyze
 
+.PHONY: lint
+lint: analyze ## Alias for analyze.
+
+.PHONY: gen-l10n
+gen-l10n: ## Generate Flutter localization sources.
+	$(FLUTTER) gen-l10n
+
+.PHONY: generate
+generate: gen-l10n ## Run project code generation.
+
 .PHONY: test
 test: ## Run unit and widget tests.
 	$(FLUTTER) test
+
+.PHONY: test-verbose
+test-verbose: ## Run unit and widget tests with expanded output.
+	$(FLUTTER) test --reporter expanded
 
 .PHONY: test-coverage
 test-coverage: ## Run unit and widget tests with coverage.
@@ -77,12 +118,14 @@ coverage-check: test-coverage ## Enforce the minimum line coverage threshold.
 .PHONY: check
 check: ## Run fast local PR checks.
 	$(MAKE) format-check
+	$(MAKE) gen-l10n
 	$(MAKE) analyze
 	$(MAKE) test
 
 .PHONY: ci
 ci: ## Run the default CI quality gate.
 	$(MAKE) format-check
+	$(MAKE) gen-l10n
 	$(MAKE) analyze
 	$(MAKE) coverage-check
 
@@ -94,9 +137,25 @@ devices: ## List connected Flutter devices.
 run: ## Run the app on the selected Flutter device.
 	$(FLUTTER) run $(DART_DEFINES)
 
+.PHONY: run-dev
+run-dev: ## Run the app with development configuration.
+	$(MAKE) run APP_ENV=development
+
+.PHONY: run-staging
+run-staging: ## Run the app with staging configuration.
+	$(MAKE) run APP_ENV=staging
+
+.PHONY: run-production
+run-production: ## Run the app with production configuration.
+	$(MAKE) run APP_ENV=production
+
 .PHONY: run-web
 run-web: ## Run the app in Chrome.
 	$(FLUTTER) run -d chrome $(DART_DEFINES)
+
+.PHONY: run-macos
+run-macos: ## Run the app on macOS.
+	$(FLUTTER) run -d macos $(DART_DEFINES)
 
 .PHONY: patrol-build-android
 patrol-build-android: ## Build the Android Patrol test app.
@@ -126,6 +185,9 @@ patrol-test-macos: ## Run Patrol tests on macOS.
 build-android-debug: ## Build an Android debug APK.
 	$(FLUTTER) build apk --debug $(DART_DEFINES)
 
+.PHONY: build-apk
+build-apk: build-android-debug ## Alias for build-android-debug.
+
 .PHONY: build-ios-simulator
 build-ios-simulator: ## Build an iOS simulator app without code signing.
 	$(FLUTTER) build ios --simulator --no-codesign $(DART_DEFINES)
@@ -133,6 +195,9 @@ build-ios-simulator: ## Build an iOS simulator app without code signing.
 .PHONY: build-web
 build-web: ## Build the Flutter web app.
 	$(FLUTTER) build web $(DART_DEFINES)
+
+.PHONY: build
+build: build-web ## Build the default local artifact.
 
 .PHONY: build-macos-debug
 build-macos-debug: ## Build a macOS debug app.
@@ -179,6 +244,14 @@ release-check: ## Run the baseline checks before cutting a release.
 	$(MAKE) ci
 	$(MAKE) patrol-build-android
 	$(MAKE) build-release-web APP_ENV=production
+
+.PHONY: hooks-install
+hooks-install: ## Install Lefthook Git hooks.
+	lefthook install
+
+.PHONY: hooks-run
+hooks-run: ## Run Lefthook pre-commit checks manually.
+	lefthook run pre-commit
 
 .PHONY: tag
 tag: ## Create an annotated release tag, e.g. make tag VERSION=1.2.3.

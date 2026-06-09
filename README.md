@@ -64,13 +64,23 @@ calling `make`.
 | --- | --- |
 | Show all commands | `make help` |
 | Install dependencies | `make setup` |
+| Check outdated dependencies | `make outdated` |
+| Upgrade dependencies | `make upgrade` |
 | Format code | `make format` |
 | Verify formatting | `make format-check` |
+| Preview Dart fixes | `make fix` |
+| Apply Dart fixes | `make fix-apply` |
 | Analyze code | `make analyze` |
+| Generate localizations | `make gen-l10n` |
 | Run widget/unit tests | `make test` |
+| Run verbose tests | `make test-verbose` |
 | Run coverage | `make test-coverage` |
 | Enforce coverage threshold | `make coverage-check COVERAGE_MIN=80` |
 | Run fast PR checks | `make check` |
+| Install Git hooks | `make hooks-install` |
+| Run Git hooks manually | `make hooks-run` |
+| Run Web app | `make run-web APP_ENV=development` |
+| Run macOS app | `make run-macos APP_ENV=development` |
 | Build Android Patrol app | `make patrol-build-android` |
 | Run Android Patrol smoke test | `make patrol-test-android PATROL_DEVICE=emulator-5554` |
 | Build Android debug APK | `make build-android-debug` |
@@ -110,10 +120,12 @@ Commit style commit messages before changes leave a developer machine.
 ├── android/                 # Android host project
 ├── ios/                     # iOS host project
 ├── lib/
+│   ├── l10n/                # ARB localization source files
 │   ├── main.dart            # Runtime entrypoint
 │   └── src/
 │       ├── app/             # App shell, config, bootstrap
 │       ├── features/        # Feature-first product code
+│       ├── localization/    # Generated localization APIs
 │       └── shared/          # Shared UI, theme, utilities
 ├── linux/                   # Linux desktop host project
 ├── macos/                   # macOS desktop host project
@@ -153,6 +165,7 @@ Android also includes the Patrol JUnit runner and orchestrator Gradle setup.
 - [Architecture](docs/architecture.md)
 - [Code Style](docs/code-style.md)
 - [Configuration](docs/configuration.md)
+- [Localization](docs/localization.md)
 - [Testing Strategy](docs/testing.md)
 - [Workflow Guidelines](docs/workflow.md)
 - [Release Checklist](docs/checklists/release.md)

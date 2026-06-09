@@ -1,6 +1,5 @@
 import 'package:enterprise_flutter_template/src/app/app.dart';
 import 'package:enterprise_flutter_template/src/app/app_config.dart';
-import 'package:enterprise_flutter_template/src/app/app_constants.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:patrol/patrol.dart';
 
@@ -15,7 +14,7 @@ void main() {
       ),
     );
 
-    expect($(AppConstants.appName), findsWidgets);
+    expect($('Enterprise Flutter Template'), findsWidgets);
     expect($('Development'), findsOneWidget);
   });
 }

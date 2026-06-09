@@ -21,6 +21,12 @@ make setup
 make check
 ```
 
+When changing localized strings, regenerate localization sources:
+
+```bash
+make gen-l10n
+```
+
 For CI-equivalent coverage enforcement, run:
 
 ```bash

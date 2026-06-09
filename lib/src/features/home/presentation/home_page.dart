@@ -1,5 +1,5 @@
 import 'package:enterprise_flutter_template/src/app/app_config.dart';
-import 'package:enterprise_flutter_template/src/app/app_constants.dart';
+import 'package:enterprise_flutter_template/src/localization/generated/app_localizations.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,10 +9,11 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final AppLocalizations localizations = AppLocalizations.of(context);
     final TextTheme textTheme = Theme.of(context).textTheme;
 
     return Scaffold(
-      appBar: AppBar(title: const Text(AppConstants.appName)),
+      appBar: AppBar(title: Text(localizations.appTitle)),
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
@@ -23,10 +24,10 @@ class HomePage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  Text(AppConstants.appName, style: textTheme.headlineMedium),
+                  Text(localizations.appTitle, style: textTheme.headlineMedium),
                   const SizedBox(height: 16),
                   Text(
-                    AppConstants.templateSummary,
+                    localizations.templateSummary,
                     style: textTheme.bodyLarge,
                   ),
                   const SizedBox(height: 32),
@@ -47,12 +48,16 @@ class _EnvironmentTile extends StatelessWidget {
   final AppConfig config;
 
   @override
-  Widget build(BuildContext context) => Card(
-    child: ListTile(
-      leading: const Icon(Icons.verified_user_outlined),
-      title: const Text('Runtime environment'),
-      subtitle: Text(config.apiBaseUrl),
-      trailing: Text(config.environment.label),
-    ),
-  );
+  Widget build(BuildContext context) {
+    final AppLocalizations localizations = AppLocalizations.of(context);
+
+    return Card(
+      child: ListTile(
+        leading: const Icon(Icons.verified_user_outlined),
+        title: Text(localizations.runtimeEnvironmentTitle),
+        subtitle: Text(config.apiBaseUrl),
+        trailing: Text(config.environment.label),
+      ),
+    );
+  }
 }

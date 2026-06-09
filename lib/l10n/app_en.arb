@@ -1,0 +1,15 @@
+{
+  "@@locale": "en",
+  "appTitle": "Enterprise Flutter Template",
+  "@appTitle": {
+    "description": "Application title used by the template shell."
+  },
+  "templateSummary": "A production-ready repository baseline for Flutter teams.",
+  "@templateSummary": {
+    "description": "Short description shown on the home screen."
+  },
+  "runtimeEnvironmentTitle": "Runtime environment",
+  "@runtimeEnvironmentTitle": {
+    "description": "Title for the runtime configuration summary tile."
+  }
+}
