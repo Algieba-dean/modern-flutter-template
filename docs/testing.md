@@ -10,6 +10,21 @@ Use `test/` for unit and widget tests.
 make test
 ```
 
+Coverage is collected with:
+
+```bash
+make test-coverage
+```
+
+CI enforces the minimum line coverage threshold through:
+
+```bash
+make coverage-check COVERAGE_MIN=80
+```
+
+Keep the threshold high enough to catch accidental test loss, but do not use it
+as a substitute for meaningful assertions around business behavior.
+
 Fast tests should cover:
 
 - pure domain logic

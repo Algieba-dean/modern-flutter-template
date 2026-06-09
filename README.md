@@ -53,6 +53,10 @@ rm tool/init_project.dart
 - Visual Studio Build Tools for Windows desktop builds
 - Linux GTK build dependencies for Linux desktop builds
 
+The repository includes `.fvmrc` to pin the template SDK baseline. If your team
+uses FVM, run commands through `fvm flutter` or set `FLUTTER=fvm flutter` when
+calling `make`.
+
 ## Common Commands
 
 | Task | Command |
@@ -64,6 +68,7 @@ rm tool/init_project.dart
 | Analyze code | `make analyze` |
 | Run widget/unit tests | `make test` |
 | Run coverage | `make test-coverage` |
+| Enforce coverage threshold | `make coverage-check COVERAGE_MIN=80` |
 | Run fast PR checks | `make check` |
 | Build Android Patrol app | `make patrol-build-android` |
 | Run Android Patrol smoke test | `make patrol-test-android PATROL_DEVICE=emulator-5554` |
@@ -83,6 +88,18 @@ rm tool/init_project.dart
 make check FLUTTER=/path/to/flutter DART=/path/to/dart
 make build-release-android-aab APP_ENV=production BUILD_NAME=1.2.3 BUILD_NUMBER=42
 ```
+
+## Local Git Hooks
+
+The template includes a `.lefthook.yml` configuration for local quality gates.
+Install Lefthook and enable the hooks in each clone:
+
+```bash
+lefthook install
+```
+
+The default hooks verify formatting, static analysis, tests, and Conventional
+Commit style commit messages before changes leave a developer machine.
 
 ## Project Structure
 

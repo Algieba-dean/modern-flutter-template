@@ -21,6 +21,18 @@ make setup
 make check
 ```
 
+For CI-equivalent coverage enforcement, run:
+
+```bash
+make coverage-check COVERAGE_MIN=80
+```
+
+If Lefthook is installed locally, enable the shared Git hooks:
+
+```bash
+lefthook install
+```
+
 Run Patrol when the change touches a real user journey or native behavior:
 
 ```bash

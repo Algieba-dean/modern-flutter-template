@@ -1,0 +1,22 @@
+pre-commit:
+  parallel: false
+  commands:
+    format:
+      run: make format-check
+    analyze:
+      run: make analyze
+    test:
+      run: make test
+
+commit-msg:
+  commands:
+    conventional-commit:
+      run: |
+        message_file="{1}"
+        first_line="$(head -n 1 "$message_file")"
+        pattern='^(build|chore|ci|docs|feat|fix|perf|refactor|revert|style|test)(\([a-z0-9._/-]+\))?(!)?: .+'
+        if ! printf '%s\n' "$first_line" | grep -Eq "$pattern"; then
+          echo "Commit message must use Conventional Commit format."
+          echo "Example: feat(auth): add password reset"
+          exit 1
+        fi

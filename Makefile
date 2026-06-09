@@ -5,6 +5,7 @@ FLUTTER ?= flutter
 DART ?= dart
 APP_ENV ?= development
 API_BASE_URL ?= https://api.example.com
+COVERAGE_MIN ?= 80
 
 DART_DEFINES := --dart-define=APP_ENV=$(APP_ENV) --dart-define=API_BASE_URL=$(API_BASE_URL)
 DART_FORMAT_DIRS ?= lib test patrol_test tool
@@ -69,6 +70,10 @@ test: ## Run unit and widget tests.
 test-coverage: ## Run unit and widget tests with coverage.
 	$(FLUTTER) test --coverage
 
+.PHONY: coverage-check
+coverage-check: test-coverage ## Enforce the minimum line coverage threshold.
+	$(DART) run tool/check_coverage.dart $(COVERAGE_MIN)
+
 .PHONY: check
 check: ## Run fast local PR checks.
 	$(MAKE) format-check
@@ -79,7 +84,7 @@ check: ## Run fast local PR checks.
 ci: ## Run the default CI quality gate.
 	$(MAKE) format-check
 	$(MAKE) analyze
-	$(MAKE) test-coverage
+	$(MAKE) coverage-check
 
 .PHONY: devices
 devices: ## List connected Flutter devices.

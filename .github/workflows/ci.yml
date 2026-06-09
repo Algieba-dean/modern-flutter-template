@@ -50,7 +50,7 @@ jobs:
         run: make analyze
 
       - name: Run tests
-        run: make test-coverage
+        run: make coverage-check
 
       - name: Upload coverage report
         if: always()
@@ -60,6 +60,12 @@ jobs:
           path: coverage/lcov.info
           if-no-files-found: ignore
           retention-days: 7
+
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          files: coverage/lcov.info
+          fail_ci_if_error: false
 
   android-web:
     name: Android and Web Build
