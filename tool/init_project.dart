@@ -72,11 +72,12 @@ Future<void> main() async {
   stdout.writeln();
   stdout.writeln('Initialization complete.');
   stdout.writeln('Next steps:');
-  stdout.writeln('1. flutter pub get');
-  stdout.writeln('2. dart format .');
-  stdout.writeln('3. flutter analyze');
-  stdout.writeln('4. flutter test');
-  stdout.writeln('5. git add . && git commit -m "chore: initialize project"');
+  stdout.writeln('1. make setup');
+  stdout.writeln('2. make generate');
+  stdout.writeln('3. make check');
+  stdout.writeln('4. Review docs/flutter-project-workflow.md');
+  stdout.writeln('5. Remove tool/init_project.dart when identity is stable');
+  stdout.writeln('6. git add . && git commit -m "chore: initialize project"');
 }
 
 String _ask(

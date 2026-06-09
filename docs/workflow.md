@@ -1,5 +1,9 @@
 # Workflow Guidelines
 
+For the end-to-end Flutter project lifecycle, start with
+[Flutter Project Workflow](flutter-project-workflow.md). This document focuses
+on branch, PR, review, and release conventions.
+
 ## Branches
 
 - `main`: protected release branch.
@@ -18,6 +22,7 @@ Before opening a PR:
 
 ```bash
 make setup
+make generate
 make check
 ```
 

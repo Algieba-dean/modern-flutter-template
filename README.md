@@ -36,6 +36,7 @@ dart run tool/init_project.dart
 
 ```bash
 make setup
+make generate
 make check
 ```
 
@@ -165,6 +166,7 @@ Android also includes the Patrol JUnit runner and orchestrator Gradle setup.
 - [Architecture](docs/architecture.md)
 - [Code Style](docs/code-style.md)
 - [Configuration](docs/configuration.md)
+- [Flutter Project Workflow](docs/flutter-project-workflow.md)
 - [Localization](docs/localization.md)
 - [Testing Strategy](docs/testing.md)
 - [Workflow Guidelines](docs/workflow.md)
